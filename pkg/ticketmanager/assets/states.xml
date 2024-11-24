@@ -1,0 +1,51 @@
+@startuml
+
+[*] --> Initializing
+
+state Creating_User {
+  Creating_User --> Waiting : Task Success
+  Creating_User --> Finishing_User : Task Failure
+}
+
+state Updating_Status {
+  Updating_Status --> Waiting : Task Success
+  Updating_Status --> Finishing_User : Task Failure
+}
+
+state Recreating_User {
+  Recreating_User --> Waiting : Task Success
+  Recreating_User --> Finishing_User : Task Failure
+}
+
+state Connecting_User {
+  Connecting_User --> Waiting : Task Success
+  Connecting_User --> Finishing_User : Task Failure
+}
+
+state Selling_Ticket {
+  Selling_Ticket --> Waiting : Task Success
+  Selling_Ticket --> Finishing_User : Task Failure
+}
+
+state Waiting {
+
+}
+
+state Finishing_User {
+   
+}
+
+Initializing --> Waiting : Initialization Complete
+Waiting --> Connecting_User : connect Request
+Waiting --> Connecting_User : reconnect Request
+
+Waiting --> Updating_Status : alive message
+Waiting --> Creating_User : newclient message
+Waiting --> Recreating_User : reconnect message
+Waiting --> Finishing_User : finished message
+
+Waiting --> Selling_Ticket : chanseller redis
+Waiting --> Finishing_User : chanfinished redis
+
+
+@enduml
