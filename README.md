@@ -72,8 +72,8 @@ Welcome! This project is a **load management system** built in **Go**, designed 
 ### 1️⃣ **Clone the Repository:**
 
 ```bash
-git clone https://github.com/your-repo/load-manager.git
-cd load-manager
+git clone https://github.com/by2waysprojects/queue-processor.git
+cd queue-processor
 ```
 
 ### 2️⃣ **Set Up Redis:**
@@ -84,8 +84,8 @@ cd load-manager
 ### 3️⃣ **Build and Run the Application:**
 
 ```bash
-go build -o load-manager .
-./load-manager
+go build -o queue-processor cmd/main.go
+./queue-processor
 ```
 
 ### 4️⃣ **Use Docker:**
@@ -93,8 +93,8 @@ go build -o load-manager .
 Prefer containers? Build and run the Docker image! 🐳
 
 ```bash
-docker build -t load-manager .
-docker run -p 8080:8080 --env REDIS_URL=redis://localhost:6379 load-manager
+docker build -t queue-processor -f build/Dockerfile
+docker run -p 8080:8080 queue-processor
 ```
 
 ### 5️⃣ **Deploy to Kubernetes:**
@@ -111,8 +111,8 @@ We ❤️ contributions! Please check out our [Contribution Guidelines](CONTRIBU
 
 ## **📜 License**
 
-This project is licensed under the [MIT License](LICENSE). See the `LICENSE` file for more details.
+This project is licensed under the [Apache-2.0 License](LICENSE). See the `LICENSE` file for more details.
 
 ---
 
-For questions or support, feel free to reach out via [issues](https://github.com/your-repo/load-manager/issues). 💬
+For questions or support, feel free to reach out via [issues](https://github.com/by2waysprojects/queue-processor/issues). 💬
