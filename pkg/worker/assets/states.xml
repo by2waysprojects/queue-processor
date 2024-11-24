@@ -1,0 +1,38 @@
+@startuml
+
+[*] --> Initializing
+
+state Picking_User {
+  Picking_User --> Checking_Status : Task Success
+  Picking_User --> Waiting : Task Failure
+}
+
+state Checking_Status {
+  Checking_Status --> Sending_Sell_Message : Task Success
+  Checking_Status --> Waiting : Task Failure
+}
+
+state Sending_Sell_Message {
+  Sending_Sell_Message --> Waiting_Gap : Task Success
+  Sending_Sell_Message --> Finishing_Worker : Task Failure
+}
+
+state Waiting_Gap {
+  Waiting_Gap --> Waiting : Timeout
+  Waiting_Gap --> Waiting : chanfinished message
+  Waiting_Gap --> Finishing_Worker : Task Failure
+}
+
+state Waiting {
+
+}
+
+state Finishing_Worker {
+
+}
+
+Initializing --> Waiting : Initialization Complete
+Waiting --> Picking_User : newuser redis
+
+
+@enduml
