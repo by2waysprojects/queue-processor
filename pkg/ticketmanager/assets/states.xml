@@ -17,11 +17,6 @@ state Recreating_User {
   Recreating_User --> Finishing_User : Task Failure
 }
 
-state Connecting_User {
-  Connecting_User --> Waiting : Task Success
-  Connecting_User --> Finishing_User : Task Failure
-}
-
 state Selling_Ticket {
   Selling_Ticket --> Waiting : Task Success
   Selling_Ticket --> Finishing_User : Task Failure
@@ -35,9 +30,8 @@ state Finishing_User {
    
 }
 
-Initializing --> Waiting : Initialization Complete
-Waiting --> Connecting_User : connect Request
-Waiting --> Connecting_User : reconnect Request
+Initializing --> Waiting : connect Request
+Initializing --> Waiting : reconnect Request
 
 Waiting --> Updating_Status : alive message
 Waiting --> Creating_User : newclient message
